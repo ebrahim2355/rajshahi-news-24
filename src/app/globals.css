@@ -2,25 +2,31 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --navy: #1a2b48;
+  --brand-red: #c62828;
+  --muted: #5c5c5c;
+  --border: #e8e8e8;
+  --section-pink: #fff5f5;
+  --section-mint: #f4fff6;
+  --section-gray: #f9fafb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy: var(--navy);
+  --color-brand: var(--brand-red);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-section-pink: var(--section-pink);
+  --color-section-mint: var(--section-mint);
+  --color-section-gray: var(--section-gray);
+  --font-sans: var(--font-bengali);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-bengali), "Noto Sans Bengali", system-ui, sans-serif;
 }
