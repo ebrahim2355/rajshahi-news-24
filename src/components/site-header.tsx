@@ -1,6 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./container";
 import { IconSearch } from "./icons";
+import { HeaderAuth } from "./header-auth";
+import { BrandType } from "./brand-type";
 import { navPrimary, navTrending, site } from "@/lib/news-data";
 
 function SocialIcon({
@@ -42,6 +45,8 @@ export function SiteHeader() {
             </a>
           </div>
           <div className="flex items-center gap-2">
+            <HeaderAuth />
+            <span className="h-3 w-px bg-zinc-600" aria-hidden />
             <span className="inline-flex items-center gap-1.5 rounded-sm bg-emerald-600 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-white">
               <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
               লাইভ
@@ -60,12 +65,20 @@ export function SiteHeader() {
         <Container className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="order-2 text-sm text-muted sm:order-1">{site.dateLine}</p>
           <div className="order-1 text-center sm:order-2 sm:flex-1">
-            <Link href="/" className="group inline-block">
-              <span className="text-2xl font-black tracking-tight text-brand sm:text-4xl">
-                {site.name}
-              </span>
-              <span className="mt-0.5 block text-xs text-muted sm:text-sm">
-                {site.tagline}
+            <Link
+              href="/"
+              className="group inline-flex max-w-full items-center justify-center gap-2 outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:gap-3"
+            >
+              <Image
+                src="/brand/rajshahi-news-24-icon.png"
+                alt=""
+                width={168}
+                height={168}
+                priority
+                className="h-12 w-auto shrink-0 object-contain sm:h-14 md:h-16"
+              />
+              <span className="min-w-0 text-center sm:text-left">
+                <BrandType variant="onLight" />
               </span>
             </Link>
           </div>

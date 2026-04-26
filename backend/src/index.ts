@@ -4,6 +4,10 @@ import express from "express";
 import { connectDb } from "./db.js";
 import { healthRouter } from "./routes/health.js";
 import { storiesRouter } from "./routes/stories.js";
+import { authRouter } from "./routes/auth.js";
+import { articlesRouter } from "./routes/articles.js";
+import { pollsRouter } from "./routes/polls.js";
+import { adminRouter } from "./routes/admin.js";
 
 const app = express();
 const port = Number(process.env.PORT) || 5000;
@@ -17,7 +21,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: "2mb" }));
 
 app.get("/", (_req, res) => {
   res.json({ name: "project-news-api", docs: "/api/health" });
@@ -25,6 +29,10 @@ app.get("/", (_req, res) => {
 
 app.use("/api/health", healthRouter);
 app.use("/api/stories", storiesRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/articles", articlesRouter);
+app.use("/api/polls", pollsRouter);
+app.use("/api/admin", adminRouter);
 
 const mongoUri = process.env.MONGODB_URI;
 
@@ -38,6 +46,10 @@ async function main() {
     }
   } else {
     console.warn("MONGODB_URI is not set; data routes will return 503.");
+  }
+
+  if (!process.env.JWT_SECRET) {
+    console.warn("JWT_SECRET is not set; Facebook login and comments will not work until it is set.");
   }
 
   app.listen(port, () => {

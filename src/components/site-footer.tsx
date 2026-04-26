@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { BrandType } from "./brand-type";
 import { footerColumns, site } from "@/lib/news-data";
 import { Container } from "./container";
 
@@ -31,8 +33,18 @@ export function SiteFooter() {
       <Container className="py-10">
         <div className="grid gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="sm:col-span-2">
-            <Link href="/" className="text-2xl font-black text-white">
-              {site.name}
+            <Link
+              href="/"
+              className="inline-flex max-w-full items-center gap-2 outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-navy sm:gap-2.5"
+            >
+              <Image
+                src="/brand/rajshahi-news-24-icon.png"
+                alt=""
+                width={100}
+                height={100}
+                className="h-9 w-auto shrink-0 object-contain sm:h-10"
+              />
+              <BrandType variant="onDark" size="sm" />
             </Link>
             <p className="mt-2 max-w-sm text-sm text-zinc-400">
               {site.tagline} বিশ্বাসযোগ্য প্রতিবেদন — ওয়েবে, ইমেইলে ও মোবাইলে।

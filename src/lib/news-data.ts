@@ -1,5 +1,7 @@
 export type Story = {
   id: string;
+  /** If set, links to `/news/[slug]` (must exist in the API/seed). */
+  slug?: string;
   title: string;
   summary?: string;
   category: string;
@@ -64,6 +66,7 @@ export const navTrending = [
 
 export const leadStory: Story = {
   id: "lead-1",
+  slug: "bonya-protirodh",
   title:
     "রেকর্ড ঝড়ের মৌসুমের পর উপকূলীয় শহরগুলোতে নতুন বন্যা প্রতিরোধ ব্যবস্থা এগিয়ে নিচ্ছে",
   summary:
@@ -77,6 +80,7 @@ export const leadStory: Story = {
 export const topRowStories: Story[] = [
   {
     id: "t1",
+    slug: "abason-bil",
     title: "আবাসন বিল নিয়ে বিতর্ক কেন্দ্রে রেখে সংসদ অধিবেশন শুরু",
     category: "রাজনীতি",
     timeAgo: "৪৫ মিনিট আগে",
@@ -87,6 +91,7 @@ export const topRowStories: Story[] = [
   },
   {
     id: "t2",
+    slug: "kendrio-bank-son",
     title: "কেন্দ্রীয় ব্যাংক সুদের হার অপরিবর্তিত রেখেছে, তথ্যনির্ভর পথের ইঙ্গিত",
     category: "অর্থনীতি",
     timeAgo: "১ ঘণ্টা আগে",
@@ -97,6 +102,7 @@ export const topRowStories: Story[] = [
   },
   {
     id: "t3",
+    slug: "netoyork-10-bochor",
     title: "আঞ্চলিক পরিবহন কর্তৃপক্ষ ১০ বছরের নেটওয়ার্ক সম্প্রসারণের মানচিত্র প্রকাশ করেছে",
     category: "নগর",
     timeAgo: "৩ ঘণ্টা আগে",
@@ -149,6 +155,7 @@ export const trendingGallery: { id: string; title: string; src: string }[] = [
 
 export const worldFeatured: Story = {
   id: "w-f",
+  slug: "juddhobritir-embassy",
   title: "যুদ্ধবিরতির তৃতীয় দিন পর্যন্ত টিকে থাকায় দূতাবাস খালি করার কাজ শেষ",
   category: "বিশ্ব",
   timeAgo: "২০ মিনিট আগে",
@@ -196,6 +203,7 @@ export const worldList: Story[] = [
 export const sportsGrid: Story[] = [
   {
     id: "s1",
+    slug: "sports-underdog",
     title: "আন্ডারডগ ক্লাব ৩৭ বছরে প্রথম কাপ ফাইনালে উঠল",
     category: "ফুটবল",
     timeAgo: "১৫ মিনিট আগে",
@@ -230,6 +238,7 @@ export const sportsGrid: Story[] = [
 
 export const businessFeatured: Story = {
   id: "b-f",
+  slug: "b-f",
   title: "ক্ষুদ্র ক্লিনিকের জন্য এআই কো-পাইলট বানাতে স্টার্টআপগুলোর প্রতিযোগিতা",
   category: "প্রযুক্তি",
   timeAgo: "৫০ মিনিট আগে",
@@ -269,6 +278,7 @@ export const businessList: Story[] = [
 export const entertainmentGrid: Story[] = [
   {
     id: "e1",
+    slug: "e1",
     title: "স্ট্রিমিং সেবা জনপ্রিয় রহস্য সিরিজের দ্বিতীয় সিজন অর্ডার করেছে",
     category: "টিভি",
     timeAgo: "১০ মিনিট আগে",

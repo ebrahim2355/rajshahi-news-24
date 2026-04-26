@@ -8,7 +8,10 @@ import {
   trendingGallery,
 } from "@/lib/news-data";
 import type { Story } from "@/lib/news-data";
+import { getStoryHref } from "@/lib/story-href";
+import { buildHeroCarouselSlides } from "@/lib/hero-carousel-slides";
 import { Container } from "./container";
+import { HeroImageCarousel } from "./hero-image-carousel";
 
 type HeroSectionProps = {
   lead?: Story;
@@ -19,6 +22,7 @@ export function HeroSection({
   lead = defaultLead,
   topRow = defaultTopRow,
 }: HeroSectionProps) {
+  const heroSlides = buildHeroCarouselSlides(lead, topRow);
   return (
     <section className="bg-white py-8">
       <Container>
@@ -28,7 +32,7 @@ export function HeroSection({
               {lead.category} · {lead.timeAgo}
             </p>
             <h1 className="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-              <Link href="#" className="hover:text-brand">
+              <Link href={getStoryHref(lead)} className="hover:text-brand">
                 {lead.title}
               </Link>
             </h1>
@@ -37,18 +41,7 @@ export function HeroSection({
             )}
           </div>
           <div className="lg:col-span-7">
-            <Link href="#" className="group relative block overflow-hidden rounded-sm">
-              <div className="relative aspect-[16/9] w-full">
-                <Image
-                  src={lead.imageSrc}
-                  alt={lead.imageAlt}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-[1.02]"
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  priority
-                />
-              </div>
-            </Link>
+            <HeroImageCarousel slides={heroSlides} />
           </div>
         </div>
 
@@ -63,7 +56,7 @@ export function HeroSection({
                   key={s.id}
                   className="flex flex-col border-b border-border pb-4 sm:border-b-0 sm:pb-0"
                 >
-                  <Link href="#" className="group">
+                  <Link href={getStoryHref(s)} className="group">
                     <div className="relative aspect-[3/2] w-full overflow-hidden rounded-sm">
                       <Image
                         src={s.imageSrc}

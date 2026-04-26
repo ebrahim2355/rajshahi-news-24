@@ -12,6 +12,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { VideoSection } from "@/components/video-section";
 import { getHeroData } from "@/lib/fetch-hero";
+import { LandingPoll } from "@/components/landing-poll";
 
 export default async function Home() {
   const { lead, top } = await getHeroData();
@@ -27,6 +28,7 @@ export default async function Home() {
       <SiteHeader />
       <main id="main" className="flex-1">
         <HeroSection lead={lead} topRow={top} />
+        <LandingPoll />
         <WorldSection />
         <SportsSection />
         <BusinessSection />

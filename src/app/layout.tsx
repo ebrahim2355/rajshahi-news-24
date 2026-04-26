@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Bengali } from "next/font/google";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const notoSansBengali = Noto_Sans_Bengali({
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="bn" className={`${notoSansBengali.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col text-[15px] leading-relaxed text-foreground">
-        {children}
+        <div id="fb-root" />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

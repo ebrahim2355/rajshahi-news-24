@@ -1,4 +1,4 @@
-import { getApiBaseUrl } from "./api";
+import { getServerApiBaseUrl } from "./api";
 import {
   leadStory,
   topRowStories,
@@ -14,7 +14,7 @@ export type HeroData = { lead: Story; top: Story[] };
  * API is down, Mongo is empty, or `NEXT_PUBLIC_API_URL` is unset in production.
  */
 export async function getHeroData(): Promise<HeroData> {
-  const base = getApiBaseUrl();
+  const base = getServerApiBaseUrl();
   if (!base) {
     return { lead: leadStory, top: topRowStories };
   }

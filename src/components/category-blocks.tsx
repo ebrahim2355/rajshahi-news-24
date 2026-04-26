@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Story } from "@/lib/news-data";
+import { getStoryHref } from "@/lib/story-href";
 import {
   businessFeatured,
   businessList,
@@ -15,7 +16,7 @@ import { SectionTitle } from "./section-title";
 function SmallRow({ s }: { s: Story }) {
   return (
     <li className="border-b border-border last:border-0">
-      <Link href="#" className="group flex gap-3 py-3">
+      <Link href={getStoryHref(s)} className="group flex gap-3 py-3">
         <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm sm:h-[72px] sm:w-28">
           <Image
             src={s.imageSrc}
@@ -42,7 +43,7 @@ function SmallRow({ s }: { s: Story }) {
 function FeaturedLeft({ s }: { s: Story }) {
   return (
     <div>
-      <Link href="#" className="group block">
+      <Link href={getStoryHref(s)} className="group block">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm sm:aspect-[16/10]">
           <Image
             src={s.imageSrc}
@@ -75,7 +76,7 @@ function CardGrid({ items, cols = 4 }: { items: Story[]; cols?: 3 | 4 }) {
     >
       {items.map((s) => (
         <article key={s.id} className="border-b border-border pb-4 sm:border-0 sm:pb-0">
-          <Link href="#" className="group block">
+          <Link href={getStoryHref(s)} className="group block">
             <div className="relative aspect-[3/2] w-full overflow-hidden rounded-sm">
               <Image
                 src={s.imageSrc}
